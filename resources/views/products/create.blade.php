@@ -14,6 +14,13 @@
     <form class="flex flex-col items-center justify-center bg-slate-800 text-white py-10" method="POST" action="{{route('product.store')}}">
         @csrf
         @method('post')
+        @if ($errors-> any())
+            <ul>
+                @foreach ($errors-> all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        @endif
         <div class="">
             <div class="my-4">
                 <label class="inline-block w-[5rem]" for="name">Name</label>
@@ -25,7 +32,7 @@
             </div>
             <div class="my-4">
                 <label class="inline-block w-[5rem]" for="price">Price</label>
-                <input class="rounded-md px-3 py-1  bg-slate-400" id="price" type="number" name="price" placeholder="Price" min="0" step="0.01" required>
+                <input class="rounded-md px-3 py-1  bg-slate-400" id="price" type="number" name="price" placeholder="Price" min="0" step="0.0001" required>
             </div>
             <div class="my-4">
                 <label class="inline-block w-[5rem]" for="description">Description</label>

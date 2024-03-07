@@ -13,6 +13,14 @@
     <h1 class="text-xl text-yellow-400 text-center bg-slate-800 p-5 font-bold">
         Welcome to products
     </h1>
+
+    <div class="">
+        @if (session()->has('success'))
+            <div class="bg-green-600 p-5">
+                {{session('success')}}
+            </div>
+        @endif
+    </div>
     <div class="">
 
 
@@ -61,7 +69,7 @@
                                     {{ $product->description }}
                                 </td>
                                 <td class="px-6 py-4 text-right">
-                                    <a href="#"
+                                    <a href="{{route('product.edit', ['product' =>  $product] )}}"
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                 </td>
                             </tr>
@@ -71,5 +79,4 @@
             </div>
     </div>
 </body>
-
 </html>

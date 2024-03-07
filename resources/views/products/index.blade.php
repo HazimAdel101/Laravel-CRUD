@@ -47,6 +47,9 @@
                             <th scope="col" class="px-6 py-3">
                                 <span class="sr-only">Edit</span>
                             </th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="sr-only">Delete</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,6 +74,13 @@
                                 <td class="px-6 py-4 text-right">
                                     <a href="{{route('product.edit', ['product' =>  $product] )}}"
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                </td>
+                                <td>
+                                    <form method="POST" action="{{route('product.delete', ['product' => $product])}}">
+                                        @csrf
+                                        @method('delete')
+                                        <input class="text-red-600" type="submit" value="Delete">
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
